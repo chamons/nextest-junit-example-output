@@ -1,0 +1,38 @@
+[test-groups]
+serial = { max-threads = 1 }
+
+[[profile.default.overrides]]
+filter = 'test(serialized_test_)'
+test-group = 'serial'
+
+[store]
+# The directory under the workspace root at which nextest-related files are
+# written. Profile-specific storage is currently written to dir/<profile-name>.
+dir = "target/nextest"
+
+[profile.default]
+test-threads = 1
+retries = 0
+fail-fast = false
+failure-output = "immediate-final"
+slow-timeout = { period = "15s", terminate-after = 6 }
+
+[profile.ci]
+test-threads = 2
+# Do not cancel the test run on the first failure.
+fail-fast = false
+# Print out output for failing tests as soon as they fail, and also at the end
+# of the run (for easy scrollability).
+failure-output = "immediate-final"
+# Retries generate xml output that CircleCI is unable to parse, therefore disabled
+retries = 0
+
+[profile.ci.junit]
+path = "junit.original.xml"
+# The name of the top-level "report" element in JUnit report.
+report-name = "nextest-run"
+
+# Tests with `retry_flakey` in the name can retry a few times
+[[profile.default.overrides]]
+filter = 'test(retry_flakey)'
+retries = 3

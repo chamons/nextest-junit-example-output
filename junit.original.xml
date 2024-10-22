@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="nextest-run" tests="3" failures="1" errors="0" uuid="66a37921-6f46-4a9e-bf9a-f34a6e74555b" timestamp="2024-10-22T21:34:22.666+00:00" time="0.018">
+    <testsuite name="errors::bin/errors" tests="3" disabled="0" errors="0" failures="1">
+        <testcase name="tests::test_that_fails" classname="errors::bin/errors" timestamp="2024-10-22T21:34:22.667+00:00" time="0.005">
+            <failure type="test failure"/>
+            <system-out>
+running 1 test
+test tests::test_that_fails ... FAILED
+
+failures:
+
+failures:
+    tests::test_that_fails
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.00s
+
+</system-out>
+            <system-err>thread &apos;tests::test_that_fails&apos; panicked at src/main.rs:14:9:
+assertion `left == right` failed
+  left: 1
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</system-err>
+        </testcase>
+        <testcase name="tests::test_that_passes" classname="errors::bin/errors" timestamp="2024-10-22T21:34:22.672+00:00" time="0.006">
+        </testcase>
+        <testcase name="tests::test_is_flakey_fails_retry_flakey" classname="errors::bin/errors" timestamp="2024-10-22T21:34:22.680+00:00" time="0.005">
+            <flakyFailure timestamp="2024-10-22T21:34:22.666+00:00" time="0.006" type="test failure">
+                <system-out>
+running 1 test
+test tests::test_is_flakey_fails_retry_flakey ... FAILED
+
+failures:
+
+failures:
+    tests::test_is_flakey_fails_retry_flakey
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.00s
+
+</system-out>
+                <system-err>thread &apos;tests::test_is_flakey_fails_retry_flakey&apos; panicked at src/main.rs:20:13:
+assertion `left == right` failed
+  left: 1
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</system-err>
+            </flakyFailure>
+            <flakyFailure timestamp="2024-10-22T21:34:22.673+00:00" time="0.006" type="test failure">
+                <system-out>
+running 1 test
+test tests::test_is_flakey_fails_retry_flakey ... FAILED
+
+failures:
+
+failures:
+    tests::test_is_flakey_fails_retry_flakey
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.00s
+
+</system-out>
+                <system-err>thread &apos;tests::test_is_flakey_fails_retry_flakey&apos; panicked at src/main.rs:20:13:
+assertion `left == right` failed
+  left: 1
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</system-err>
+            </flakyFailure>
+        </testcase>
+    </testsuite>
+</testsuites>
